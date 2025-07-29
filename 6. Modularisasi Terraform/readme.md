@@ -7,7 +7,9 @@ Project ini membuat:
 ✅ 1 Subnet  
 ✅ Firewall rules (SSH & HTTP)  
 ✅ 2 VM: web & db (dengan spesifikasi berbeda)  
-✅ Nginx otomatis terinstall di web-server (via `startup.sh`)  
+✅ Nginx otomatis terinstall di web-server (via `startup.sh`) 
+✅ Nginx otomatis terinstall di db-server (via `startupdb.sh`)  
+
 
 ---
 
