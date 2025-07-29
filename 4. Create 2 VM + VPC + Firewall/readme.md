@@ -13,6 +13,7 @@ Project ini menggunakan Terraform untuk membuat infrastruktur GCP yang terdiri d
 
 ## 📁 Struktur File
 
+```hcl
 ├── main.tf # Resource VM
 ├── network.tf # VPC dan subnet
 ├── firewall.tf # Firewall rules (SSH + HTTP)
@@ -21,7 +22,7 @@ Project ini menggunakan Terraform untuk membuat infrastruktur GCP yang terdiri d
 ├── terraform.tfvars.example # Contoh variabel
 ├── output.tf # Output IP VM
 ├── .gitignore # Ignore file sensitif dan auto-gen
-
+```
 
 ---
 
@@ -50,3 +51,4 @@ terraform init
 terraform plan
 terraform apply
 
+```

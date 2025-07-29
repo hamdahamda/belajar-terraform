@@ -37,8 +37,7 @@ step-6-modularized-terraform/
 │ ├── main.tf
 │ ├── variables.tf
 │ └── outputs.tf
-
-
+```
 ---
 
 ## ⚙️ Setup
@@ -79,4 +78,4 @@ Menggunakan tag VM (web, db) sebagai target_tags
 Membuat VM instance
 Dynamic input: machine_type, image, tags, startup_script
 
-
+```

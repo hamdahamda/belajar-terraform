@@ -11,7 +11,7 @@ Project ini menggunakan Terraform untuk deploy:
 
 ## 📁 Struktur File
 
-.
+```hcl
 ├── main.tf # Resource VM (dengan startup script)
 ├── network.tf # VPC dan subnet
 ├── firewall.tf # Firewall rules (SSH + HTTP)
@@ -21,9 +21,11 @@ Project ini menggunakan Terraform untuk deploy:
 ├── output.tf # Output IP VM
 ├── startup.sh # 🆕 Script untuk install nginx
 └── .gitignore
+```
+---
 
 🖥️ Startup Script (startup.sh)
-
+```hcl
 #!/bin/bash
 apt update -y
 apt install nginx -y
@@ -40,4 +42,4 @@ http://<web-server-ip>
 
 🟢 Harus muncul:
 Hello from Terraform Nginx VM!
-
+```

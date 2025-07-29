@@ -9,13 +9,14 @@ Project ini menggunakan Terraform untuk membuat **2 VM instance berbeda di Googl
 - Pakai default network GCP
 
 ## 📁 Struktur File
+```hcl
 ├── main.tf # Resource VM web + db
 ├── variables.tf # Variabel input (project_id, zone, dll)
 ├── terraform.tfvars # Nilai untuk variable (di-ignore)
 ├── terraform.tfvars.example # Contoh isi variabel
 ├── output.tf # Menampilkan IP VM
 └── .gitignore # Ignore file sensitif dan hasil Terraform
-
+```
 
 ## ⚙️ Prasyarat
 
@@ -42,3 +43,4 @@ terraform init
 terraform plan
 terraform apply
 
+```

@@ -10,6 +10,7 @@ Project ini menggunakan Terraform untuk membuat 2 VM di Google Cloud Platform de
 
 ## 📁 Struktur File
 
+```hcl
 ├── main.tf # VM definition (web & db)
 ├── network.tf # Custom VPC dan subnet
 ├── variables.tf # Variabel input
@@ -17,7 +18,7 @@ Project ini menggunakan Terraform untuk membuat 2 VM di Google Cloud Platform de
 ├── terraform.tfvars.example # Contoh variabel
 ├── output.tf # Output IP & nama VM
 ├── .gitignore # Ignore file sensitif dan sementara
-
+```
 
 ---
 
@@ -44,3 +45,5 @@ zone             = "us-central1-a"
 terraform init
 terraform plan
 terraform apply
+
+```
