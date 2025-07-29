@@ -1,29 +1,32 @@
-# ⛔ Jangan commit file credentials
+# ===============================
+# 🌍 Terraform Git Ignore Template
+# ===============================
+
+# 🔐 Credentials
 credentials.json
 *.secret.json
 *.key.json
 *.creds.json
-# Optional: tetap commit contoh file kosong
 !example*.json
 
-# ⛔ Terraform state dan backup
+# 💾 Terraform state and backup
 *.tfstate
 *.tfstate.*
 crash.log
 crash.*.log
 
-# ⛔ Terraform plan file
+# 📦 Terraform plan files
 *.tfplan
 
-# ⛔ Terraform .terraform folder (cache plugin/provider)
+# 🧩 Terraform working dir
 .terraform/
 
-# ⛔ Terraform variable files (optional kalau isinya sensitif)
+# 🔧 Variable definition files
 terraform.tfvars
 terraform.tfvars.json
 *.auto.tfvars
 
-# ⛔ IDE & OS files
+# 🛠 IDE & OS artifacts
 .DS_Store
 .idea/
 .vscode/
@@ -31,3 +34,6 @@ terraform.tfvars.json
 *.swo
 *.bak
 *.tmp
+*~
+*.backup
+*.orig
