@@ -15,6 +15,7 @@ Project ini membuat:
 
 ## 📁 Struktur Folder
 
+```hcl
 step-6-modularized-terraform/
 ├── main.tf
 ├── variables.tf
