@@ -5,15 +5,15 @@ variable "project_id" {
 
 variable "region" {
   description = "Region tempat VM dibuat"
-  default     = "us-central1"
+  type        = string
 }
 
 variable "zone" {
   description = "Zone tempat VM dibuat"
-  default     = "us-central1-a"
+  type        = string
 }
 
 variable "credentials_path" {
-  description = "Path ke credentials file"
+  description = "Path ke service account credentials file (.json)"
   type        = string
 }

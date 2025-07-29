@@ -1,0 +1,33 @@
+# ⛔ Jangan commit file credentials
+credentials.json
+*.secret.json
+*.key.json
+*.creds.json
+# Optional: tetap commit contoh file kosong
+!example*.json
+
+# ⛔ Terraform state dan backup
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+
+# ⛔ Terraform plan file
+*.tfplan
+
+# ⛔ Terraform .terraform folder (cache plugin/provider)
+.terraform/
+
+# ⛔ Terraform variable files (optional kalau isinya sensitif)
+terraform.tfvars
+terraform.tfvars.json
+*.auto.tfvars
+
+# ⛔ IDE & OS files
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+*.bak
+*.tmp
