@@ -32,6 +32,7 @@ apt install nginx -y
 systemctl start nginx
 systemctl enable nginx
 echo "<h1>Hello from Terraform Nginx VM!</h1>" > /var/www/html/index.html
+```
 
 🔥 Firewall Rules
 allow-ssh: buka port 22 untuk VM dengan tag web dan db
@@ -42,4 +43,4 @@ http://<web-server-ip>
 
 🟢 Harus muncul:
 Hello from Terraform Nginx VM!
-```
+
