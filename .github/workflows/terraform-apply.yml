@@ -1,25 +1,17 @@
-name: Terraform Apply
+name: Manual Terraform Apply
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - '8. CI-CD Terraform/**'
-
-  pull_request:
-    paths:
-      - '8. CI-CD Terraform/**'
+  workflow_dispatch:  # 👈 hanya bisa dijalankan manual dari UI GitHub
 
 jobs:
   terraform:
-    name: Terraform Workflow
+    name: Terraform Manual Apply
     runs-on: ubuntu-latest
 
     env:
       GOOGLE_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
       TF_VAR_google_credentials_json: ${{ secrets.GCP_CREDENTIALS }}
-      TF_VAR_project_id: "sodium-pattern-465207-m9"  # atau simpan sebagai secret juga
+      TF_VAR_project_id: "sodium-pattern-465207-m9"
       TF_VAR_region: "us-central1"
       TF_VAR_zone: "us-central1-a"
 
@@ -45,12 +37,5 @@ jobs:
       - name: Terraform Plan
         run: terraform plan -out=tfplan.out -lock=false
 
-      - name: Upload Plan Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: terraform-plan
-          path: 8. CI-CD Terraform/tfplan.out
-
       - name: Terraform Apply
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: terraform apply -auto-approve tfplan.out
