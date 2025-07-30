@@ -34,14 +34,14 @@ jobs:
         run: terraform validate
 
       - name: Terraform Plan
-        run: terraform plan -out=tfplan.out
+        run: terraform plan 
 
       - name: Upload Plan Artifact
         uses: actions/upload-artifact@v4
         with:
           name: terraform-plan
-          path: 8. CI-CD Terraform/tfplan.out
+          path: 8. CI-CD 
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: terraform apply -auto-approve tfplan.out
+        run: terraform apply -auto-approve
