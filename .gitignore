@@ -21,6 +21,8 @@ terraform.tfstate.backup
 
 # 🧩 Terraform working dir
 .terraform/
+.gcp/
+.github/
 
 # 🔧 Variable definition files
 terraform.tfvars
@@ -38,4 +40,3 @@ terraform.tfvars.json
 *~
 *.backup
 *.orig
-.gcp/
