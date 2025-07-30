@@ -85,7 +85,7 @@ Struktur modular + backend remote + pipeline = 🚀 production-ready Terraform s
 
 ---
 
-```hcl
+
 📥 Cara Menambahkan GitHub Secret GCP_CREDENTIALS
 
 ---
