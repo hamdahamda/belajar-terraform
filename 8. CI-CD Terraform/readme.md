@@ -85,11 +85,6 @@ Struktur modular + backend remote + pipeline = 🚀 production-ready Terraform s
 
 ---
 
-
-📥 Cara Menambahkan GitHub Secret GCP_CREDENTIALS
-
----
-
 ## 🔐 Cara Menambahkan GitHub Secret `GCP_CREDENTIALS`
 
 Untuk menjalankan workflow CI/CD ini, kamu harus menyediakan credentials dari GCP dalam bentuk secret.
