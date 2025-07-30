@@ -34,14 +34,14 @@ jobs:
         run: terraform validate
 
       - name: Terraform Plan
-        run: terraform plan 
+        run: terraform plan -out=tfplan.out -lock=false  # 🔧 optional: hindari locking error
 
       - name: Upload Plan Artifact
         uses: actions/upload-artifact@v4
         with:
           name: terraform-plan
-          path: 8. CI-CD 
+          path: 8. CI-CD Terraform/tfplan.out  # 🔧 fix path (sebelumnya direktori, bukan file)
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: terraform apply -auto-approve
+        run: terraform apply -auto-approve tfplan.out  # 🔧 pakai hasil plan
