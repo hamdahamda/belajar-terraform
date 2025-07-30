@@ -13,7 +13,8 @@ credentials.json
 *.tfstate
 *.tfstate.*
 crash.log
-crash.*.log
+crash.*.loggit
+terraform.tfstate.backup
 
 # 📦 Terraform plan files
 *.tfplan
@@ -37,3 +38,4 @@ terraform.tfvars.json
 *~
 *.backup
 *.orig
+.gcp/
