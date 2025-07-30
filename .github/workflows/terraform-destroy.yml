@@ -1,7 +1,7 @@
 name: Terraform Destroy
 
 on:
-  workflow_dispatch:  # 🔘 Bisa dijalankan manual dari GitHub UI
+  workflow_dispatch:  # 👈 hanya bisa dijalankan manual dari UI GitHub
 
 jobs:
   destroy:
@@ -19,6 +19,12 @@ jobs:
         working-directory: 8. CI-CD Terraform/
 
     steps:
+      - name: Print Secret 1
+        run: echo $GOOGLE_CREDENTIALS
+
+      - name: Print Secret 2
+        run: echo TF_VAR_google_credentials_json
+      
       - name: Checkout Repo
         uses: actions/checkout@v4
 

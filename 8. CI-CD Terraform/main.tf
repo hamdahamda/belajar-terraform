@@ -41,6 +41,3 @@ module "db_server" {
   tags           = ["db"]
   startup_script = file("startupdb.sh")
 }
-
-# Tambahkan komentar misalnya
-# This is a test for CI/CD Step 8
