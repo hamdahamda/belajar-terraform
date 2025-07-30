@@ -30,5 +30,17 @@ jobs:
       - name: Terraform Init
         run: terraform init
 
+      - name: 🐞 DEBUG GOOGLE_CREDENTIALS (base64)
+        run: |
+          echo "GOOGLE_CREDENTIALS (base64):"
+          echo "$GOOGLE_CREDENTIALS" 
+          echo ""
+          echo "TF_VAR_google_credentials_json (base64):"
+          echo "$TF_VAR_google_credentials_json" 
+        env:
+          GOOGLE_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
+          TF_VAR_google_credentials_json: ${{ secrets.GCP_CREDENTIALS }}
+
+
       - name: Terraform Destroy
         run: terraform destroy -auto-approve
