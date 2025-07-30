@@ -13,6 +13,10 @@ jobs:
 
     env:
       GOOGLE_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
+      TF_VAR_google_credentials_json: ${{ secrets.GCP_CREDENTIALS }}
+      TF_VAR_project_id: "sodium-pattern-465207-m9"  # atau simpan sebagai secret juga
+      TF_VAR_region: "us-central1"
+      TF_VAR_zone: "us-central1-a"
 
     defaults:
       run:
@@ -34,14 +38,14 @@ jobs:
         run: terraform validate
 
       - name: Terraform Plan
-        run: terraform plan -out=tfplan.out -lock=false  # 🔧 optional: hindari locking error
+        run: terraform plan -out=tfplan.out -lock=false
 
       - name: Upload Plan Artifact
         uses: actions/upload-artifact@v4
         with:
           name: terraform-plan
-          path: 8. CI-CD Terraform/tfplan.out  # 🔧 fix path (sebelumnya direktori, bukan file)
+          path: 8. CI-CD Terraform/tfplan.out
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: terraform apply -auto-approve tfplan.out  # 🔧 pakai hasil plan
+        run: terraform apply -auto-approve tfplan.out

@@ -2,10 +2,10 @@ variable "project_id" {
   description = "ID project GCP"
   type        = string
 }
-
-variable "credentials_path" {
-  description = "Path ke file credentials JSON"
+variable "google_credentials_json" {
+  description = "Isi file JSON credentials dari secrets"
   type        = string
+  sensitive   = true
 }
 
 variable "region" {
