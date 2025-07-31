@@ -9,7 +9,7 @@ on:
         default: "Choose a folder"
         type: choice
         options:
-          - 8. CI-CD Terraform
+          # - 8. CI-CD Terraform
           - 9. Cloud Run from Source Repo
 
 jobs:
