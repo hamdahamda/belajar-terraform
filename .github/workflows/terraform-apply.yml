@@ -10,7 +10,7 @@ on:
         type: choice
         options:
           - 8. CI-CD Terraform
-          - 9. GCS Terraform
+          - 9. Cloud Run from Source Repo
 
 jobs:
   terraform:
