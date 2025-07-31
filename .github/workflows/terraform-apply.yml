@@ -25,7 +25,7 @@ jobs:
       TF_VAR_zone: ${{ secrets.GCP_ZONE }}                             # ✅ Zone
 
     steps:
-      - name: 🧾 Checkout Repo
+      - name: Checkout Repo
         uses: actions/checkout@v4
 
       - name: Setup Terraform
