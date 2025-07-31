@@ -121,7 +121,7 @@ Untuk menjalankan workflow CI/CD ini, kamu harus menyediakan credentials dari GC
 
 ```hcl
 env:
-  GOOGLE_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
+  GOOGLE_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS_GCS }}
   TF_VAR_google_credentials_json: ${{ secrets.GCP_CREDENTIALS }}
 ```
 ---

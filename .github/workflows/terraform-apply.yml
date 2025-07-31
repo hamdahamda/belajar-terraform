@@ -1,40 +1,46 @@
-name: Terraform Apply
+name: Terraform Apply (Multi Folder) # 🔄 UPDATE
 
 on:
-  workflow_dispatch:  # 👈 hanya bisa dijalankan manual dari UI GitHub
+  workflow_dispatch:
+    inputs: # 🆕 NEW: Pilih folder Terraform dari GitHub UI
+      target_folder:
+        description: "Folder Terraform yang ingin dijalankan"
+        required: true
+        default: "Choose a folder"
+        type: choice
+        options:
+          - 8. CI-CD Terraform
+          - 9. GCS Terraform
 
 jobs:
   terraform:
     name: Terraform Manual Apply
     runs-on: ubuntu-latest
-    env:
-      GOOGLE_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS_GCS }}          # GCS credentials for backend
-      TF_VAR_google_credentials_json: ${{ secrets.GCP_CREDENTIALS }}  # JSON credentials for Google provider
+
+    env: # 🔄 Tetap sama, tapi pastikan secrets benar
+      GOOGLE_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS_GCS }}          # 🔄 GCS backend credentials
+      TF_VAR_google_credentials_json: ${{ secrets.GCP_CREDENTIALS }}  # 🔄 Provider credentials
+      # GOOGLE_APPLICATION_CREDENTIALS: creds.json                      # 🆕 NEW: digunakan oleh GCP SDK
       TF_VAR_project_id: sodium-pattern-465207-m9
       TF_VAR_region: us-central1
       TF_VAR_zone: us-central1-a
 
-    defaults:
-      run:
-        working-directory: 8. CI-CD Terraform/
-
     steps:
-      - name: Checkout Repo
+      - name: 🧾 Checkout Repo
         uses: actions/checkout@v4
 
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
-        with:
-          terraform_version: 1.8.0
-
-      - name: Terraform Init
+      - name: 🧪 Terraform Init
         run: terraform init
+        working-directory: ${{ github.event.inputs.target_folder }} # 🔄 UPDATE
 
-      - name: Terraform Validate
+      - name: ✅ Terraform Validate
         run: terraform validate
+        working-directory: ${{ github.event.inputs.target_folder }} # 🔄 UPDATE
 
-      - name: Terraform Plan
+      - name: 📦 Terraform Plan
         run: terraform plan -out=tfplan.out -lock=false
+        working-directory: ${{ github.event.inputs.target_folder }} # 🔄 UPDATE
 
-      - name: Terraform Apply
+      - name: 🚀 Terraform Apply
         run: terraform apply -auto-approve tfplan.out
+        working-directory: ${{ github.event.inputs.target_folder }} # 🔄 UPDATE
