@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env: 
-      # GOOGLE_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS_GCS }}          # 🔄 GCS,coud-run credentials
+      GOOGLE_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS_GCS }}          # 🔄 GCS,coud-run credentials
       TF_VAR_google_credentials_json: ${{ secrets.GCP_CREDENTIALS_GCS }}  # 🔄 Provider credentials
       # TF_VAR_google_credentials_json: ${{ secrets.GCP_CREDENTIALS }}  # 🔄 Provider credentials
       TF_VAR_project_id: ${{ secrets.GCP_PROJECT_ID }}                 # ✅ Project ID
