@@ -1,8 +1,8 @@
-name: Terraform Destroy (Multi Folder) # 🔄 UPDATE
+name: Terraform Destroy (Multi Folder) 
 
 on:
   workflow_dispatch:
-    inputs: # 🆕 NEW: Pilih folder yang ingin di-destroy
+    inputs: # Pilih folder yang ingin di-destroy
       target_folder:
         description: "Folder Terraform yang ingin di-destroy"
         required: true
@@ -16,10 +16,9 @@ jobs:
   destroy:
     runs-on: ubuntu-latest
 
-    env: # 🔄 Tetap sama, pastikan project & credentials benar
+    env: 
       GOOGLE_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS_GCS }}
       TF_VAR_google_credentials_json: ${{ secrets.GCP_CREDENTIALS }}
-      # GOOGLE_APPLICATION_CREDENTIALS: creds.json # 🆕 NEW: digunakan oleh GCS backend
       TF_VAR_project_id: sodium-pattern-465207-m9
       TF_VAR_region: us-central1
       TF_VAR_zone: us-central1-a
@@ -31,12 +30,12 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
         with:
-          terraform_version: 1.8.0  # ✅ Wajib ada ini
+          terraform_version: 1.8.0 
 
       - name: Terraform Init
         run: terraform init
-        working-directory: ${{ github.event.inputs.target_folder }} # 🔄 UPDATE
+        working-directory: ${{ github.event.inputs.target_folder }}
 
       - name: 💣 Terraform Destroy
         run: terraform destroy -auto-approve
-        working-directory: ${{ github.event.inputs.target_folder }} # 🔄 UPDATE
+        working-directory: ${{ github.event.inputs.target_folder }}

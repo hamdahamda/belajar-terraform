@@ -1,8 +1,8 @@
-name: Terraform Apply (Multi Folder) # 🔄 UPDATE
+name: Terraform Apply (Multi Folder)
 
 on:
   workflow_dispatch:
-    inputs: # 🆕 NEW: Pilih folder Terraform dari GitHub UI
+    inputs: # Pilih folder Terraform dari GitHub UI
       target_folder:
         description: "Folder Terraform yang ingin dijalankan"
         required: true
@@ -17,13 +17,12 @@ jobs:
     name: Terraform Manual Apply
     runs-on: ubuntu-latest
 
-    env: # 🔄 Tetap sama, tapi pastikan secrets benar
+    env: 
       GOOGLE_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS_GCS }}          # 🔄 GCS backend credentials
       TF_VAR_google_credentials_json: ${{ secrets.GCP_CREDENTIALS }}  # 🔄 Provider credentials
-      # GOOGLE_APPLICATION_CREDENTIALS: creds.json                      # 🆕 NEW: digunakan oleh GCP SDK
-      TF_VAR_project_id: sodium-pattern-465207-m9
-      TF_VAR_region: us-central1
-      TF_VAR_zone: us-central1-a
+      TF_VAR_project_id: ${{ secrets.GCP_PROJECT_ID }}                 # ✅ Project ID
+      TF_VAR_region: ${{ secrets.GCP_REGION }}                         # ✅ Region
+      TF_VAR_zone: ${{ secrets.GCP_ZONE }}                             # ✅ Zone
 
     steps:
       - name: 🧾 Checkout Repo
@@ -32,20 +31,20 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
         with:
-          terraform_version: 1.8.0  # ✅ Wajib ada ini
+          terraform_version: 1.8.0 
 
       - name: 🧪 Terraform Init
         run: terraform init
-        working-directory: ${{ github.event.inputs.target_folder }} # 🔄 UPDATE
+        working-directory: ${{ github.event.inputs.target_folder }} 
 
       - name: ✅ Terraform Validate
         run: terraform validate
-        working-directory: ${{ github.event.inputs.target_folder }} # 🔄 UPDATE
+        working-directory: ${{ github.event.inputs.target_folder }} 
 
       - name: 📦 Terraform Plan
         run: terraform plan -out=tfplan.out -lock=false
-        working-directory: ${{ github.event.inputs.target_folder }} # 🔄 UPDATE
+        working-directory: ${{ github.event.inputs.target_folder }} 
 
       - name: 🚀 Terraform Apply
         run: terraform apply -auto-approve tfplan.out
-        working-directory: ${{ github.event.inputs.target_folder }} # 🔄 UPDATE
+        working-directory: ${{ github.event.inputs.target_folder }} 
