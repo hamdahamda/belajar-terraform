@@ -24,3 +24,7 @@ variable "service_name" {
   description = "Nama Service yang dibuat"
   type = string
 }
+
+variable "image_url" {
+  type = string
+}
