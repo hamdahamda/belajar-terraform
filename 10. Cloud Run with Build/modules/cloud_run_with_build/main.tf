@@ -1,6 +1,6 @@
 resource "google_cloudbuild_trigger" "default" {
   name     = "trigger-cloudrun-deploy"
- filename = "cloudbuild.yaml" # pastikan file ini ada di root GitHub repo
+ filename = "cloudbuild.yml" # pastikan file ini ada di root GitHub repo
 
   github {
     owner = var.github_owner
