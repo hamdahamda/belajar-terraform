@@ -4,6 +4,7 @@ provider "google" {
   credentials = var.google_credentials_json
 }
 
+
 module "cloud_run_with_build" {
   source        = "./modules/cloud_run_with_build"
   project_id    = var.project_id
