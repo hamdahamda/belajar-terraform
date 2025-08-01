@@ -1,6 +1,6 @@
 resource "google_cloudbuild_trigger" "default" {
-  name     = "trigger-cloudrun-deploy"
- filename = "cloudbuild.yml" # pastikan file ini ada di root GitHub repo
+  name        = "trigger-${var.service_name}"
+  description = "Trigger for ${var.service_name}"
 
   github {
     owner = var.github_owner
@@ -10,6 +10,7 @@ resource "google_cloudbuild_trigger" "default" {
     }
   }
 
+  filename = "cloudbuild.yml"
   substitutions = {
     _SERVICE_NAME = var.service_name
     _IMAGE_NAME   = var.image_name
