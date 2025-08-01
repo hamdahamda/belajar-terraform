@@ -18,17 +18,3 @@ resource "google_cloudbuild_trigger" "default" {
   }
 }
 
-
-# resource "google_cloudbuild_trigger" "test_minimal" {
-#   name = "test-trigger"
-  
-#   github {
-#     owner = "hamdahamda"
-#     name  = "latihan-css-web"
-#     push {
-#       branch = "^main$"
-#     }
-#   }
-
-#   filename = "cloudbuild.yml"
-# }
