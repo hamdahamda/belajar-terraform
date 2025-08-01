@@ -10,7 +10,7 @@
 #     }
 #   }
 
-#   filename = "cloudbuild.yml"
+#   filename = "cloudbuild.yaml"
 #   substitutions = {
 #     _SERVICE_NAME = var.service_name
 #     _IMAGE_NAME   = var.image_name
