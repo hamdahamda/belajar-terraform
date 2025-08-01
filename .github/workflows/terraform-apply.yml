@@ -9,9 +9,10 @@ on:
         default: "Choose a folder"
         type: choice
         options:
-          - 1. Create 1 VM
           # - 8. CI-CD Terraform
-          - 9. Cloud Run from Source Repo
+          # - 9. Cloud Run from Source Repo
+          - 10. Cloud Run from Source Repo
+
 
 jobs:
   terraform:
@@ -21,12 +22,16 @@ jobs:
     env: 
       GOOGLE_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS_GCS }}          # 🔄 GCS,coud-run credentials
       TF_VAR_google_credentials_json: ${{ secrets.GCP_CREDENTIALS_GCS }}  # 🔄 Provider credentials
-      # TF_VAR_google_credentials_json: ${{ secrets.GCP_CREDENTIALS }}  # 🔄 Provider credentials
       TF_VAR_project_id: ${{ secrets.GCP_PROJECT_ID }}                 # ✅ Project ID
       TF_VAR_region: ${{ secrets.GCP_REGION }}                         # ✅ Region
       TF_VAR_zone: ${{ secrets.GCP_ZONE }}                             # ✅ Zone
-      TF_VAR_service_name: "flask-cloudrun-testing"                    # ✅ service name
-      TF_VAR_image_url: "gcr.io/cloudrun/hello"                        # ✅ image URL
+
+      TF_VAR_service_name: "latihan-css-run"               
+      TF_VAR_image_name: "latihan-css-run"               
+      TF_VAR_github_owner: "hamdahamda"
+      TF_VAR_repo_name: "latihan-css-web"
+ 
+     
 
     steps:
       - name: Checkout Repo
