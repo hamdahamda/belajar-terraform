@@ -36,7 +36,6 @@ resource "google_cloudbuild_trigger" "this" {
     }
 
     images = [var.image_url]
-
     # ✅ FIX: Tambahkan opsi logging agar build tidak error
     options {
       logging = "CLOUD_LOGGING_ONLY"
