@@ -18,4 +18,5 @@ module "cloudbuild_trigger" {
   image_url      = "${var.region}-docker.pkg.dev/${var.project_id}/${var.repo_name}/${var.image_name}"
   service_name   = var.service_name
   region         = var.region
+  project_id    = var.project_id
 }
