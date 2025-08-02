@@ -11,6 +11,7 @@ on:
         options:
           # - 8. CI-CD Terraform
           - 9. Cloud Run from Source Repo
+          - 10. Cloud Run with Build
 
 jobs:
   destroy:
