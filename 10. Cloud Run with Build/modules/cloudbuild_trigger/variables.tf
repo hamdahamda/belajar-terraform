@@ -1,4 +1,6 @@
-variable "trigger_name" {}
+variable "trigger_name" {
+    default = "cloud-run-trigger-testing"
+}
 variable "github_owner" {}
 variable "github_repo" {}
 variable "github_branch" {
