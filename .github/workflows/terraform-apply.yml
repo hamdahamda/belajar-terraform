@@ -47,8 +47,8 @@ jobs:
         working-directory: ${{ github.event.inputs.target_folder }} 
 
       - name: ✅ Terraform Validate
-        run: terraform validate
-        working-directory: ${{ github.event.inputs.target_folder }} 
+        run: terraform validate -no-color
+        working-directory: ${{ github.event.inputs.target_folder }}
 
       - name: 📦 Terraform Plan
         run: terraform plan -out=tfplan.out -lock=false
