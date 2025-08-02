@@ -9,8 +9,9 @@ resource "google_cloudbuild_trigger" "default" {
       branch = "^main$"
     }
   }
-
-  filename = "cloudbuild.yaml"
+  build {
+    filename = "cloudbuild.yaml"
+  }
   substitutions = {
     _SERVICE_NAME = var.service_name
     _IMAGE_NAME   = var.image_name
