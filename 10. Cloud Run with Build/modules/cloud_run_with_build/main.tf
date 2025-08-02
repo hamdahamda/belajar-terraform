@@ -10,7 +10,10 @@ resource "google_cloudbuild_trigger" "default" {
     }
   }
   build {
-    filename = "cloudbuild.yaml"
+    step {
+      name = "gcr.io/cloud-builders/docker"
+      args = ["build", "-t", "${var.image_name}", "."]
+    }
   }
   substitutions = {
     _SERVICE_NAME = var.service_name
