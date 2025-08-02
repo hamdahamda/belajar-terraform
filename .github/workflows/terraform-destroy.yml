@@ -9,7 +9,6 @@ on:
         default: "Choose a folder"
         type: choice
         options:
-          - 1. Create 1 VM
           # - 8. CI-CD Terraform
           - 9. Cloud Run from Source Repo
 
