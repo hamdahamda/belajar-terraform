@@ -5,7 +5,6 @@ provider "google" {
 
 }
 module "cloud_run" {
-  # source       = "./modules/cloud_run"
   source = "./modules/cloudrun"
   service_name = var.service_name
   region       = var.region
