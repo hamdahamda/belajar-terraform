@@ -5,6 +5,6 @@ variable "image_name" {}
 variable "service_name" {}
 variable "github_owner" {}
 variable "github_repo" {}
-variable "build_sa_email" {
-  type = string
-}
+# variable "build_sa_email" {
+#   type = string
+# }
