@@ -41,6 +41,6 @@ variable "project_id" {
   type        = string
 }
 
-variable "build_sa_email" {
-  type = string
-}
+# variable "build_sa_email" {
+#   type = string
+# }
