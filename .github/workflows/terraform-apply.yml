@@ -44,7 +44,7 @@ jobs:
       TF_VAR_service_name: "cloudrun-testing"
       TF_VAR_github_owner: "hamdahamda"
       TF_VAR_github_repo: "latihan-css-web"
-      TF_VAR_build_sa_email: ${{ secrets.GCP_CREDENTIALS_GCS }} 
+      # TF_VAR_build_sa_email: ${{ secrets.GCP_CREDENTIALS_GCS }} 
       
 
 # ========  end untuk step  10 ======== 

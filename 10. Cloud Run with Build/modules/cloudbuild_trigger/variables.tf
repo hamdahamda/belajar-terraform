@@ -40,7 +40,3 @@ variable "project_id" {
   description = "The GCP project ID"
   type        = string
 }
-
-# variable "build_sa_email" {
-#   type = string
-# }

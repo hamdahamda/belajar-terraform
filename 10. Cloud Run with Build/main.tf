@@ -19,5 +19,4 @@ module "cloudbuild_trigger" {
   service_name   = var.service_name
   region         = var.region
   project_id    = var.project_id
-  build_sa_email   = var.build_sa_email
 }
