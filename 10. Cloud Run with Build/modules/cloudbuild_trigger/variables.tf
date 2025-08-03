@@ -41,4 +41,6 @@ variable "project_id" {
   type        = string
 }
 
-variable "build_sa_email" {}  # Email SA yang punya akses deploy Cloud Run
+variable "build_sa_email" {
+  type = string
+}
