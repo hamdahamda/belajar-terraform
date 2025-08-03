@@ -41,9 +41,4 @@ resource "google_cloudbuild_trigger" "this" {
       logging = "CLOUD_LOGGING_ONLY"
     }
   }
-
-  # (Opsional jika kamu menggunakan SA tertentu)
-  # substitutions = {
-  #   _SERVICE_ACCOUNT = var.build_sa_email
-  # }
 }
