@@ -42,7 +42,7 @@ jobs:
       TF_VAR_repo_name: "cloudrun-testing-with-terraform"        # ✅ Artifact Registry repository name
       TF_VAR_image_name: "cloudrun-testing"
       TF_VAR_service_name: "cloudrun-testing"
-      TF_VAR_image_url: "us-central1-docker.pkg.dev/sodium-pattern-465207-m9/cloudrun-testing-with-terraform"
+      TF_VAR_image_url: "us-central1-docker.pkg.dev/sodium-pattern-465207-m9/cloudrun-testing-with-terraform/app@sha256:87ca953c2a9dd497b122b100a671c4279a381598b5e33606a03b6a94813d122c"
     
 # ========  end untuk step  10 ======== 
 
