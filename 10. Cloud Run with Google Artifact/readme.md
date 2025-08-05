@@ -1,48 +1,67 @@
-# 🚀 Step 9: Deploy Aplikasi ke Cloud Run dari Source Repo (dengan Terraform)
+# ☁️ Deploy Cloud Run with Google Artifact Registry using Terraform
 
-Tutorial ini akan menunjukkan bagaimana cara menggunakan **Terraform** untuk:
-- Provision layanan **Cloud Run**
-- Deploy image aplikasi dari **Container Registry / Artifact Registry**
-- Setup IAM agar Cloud Run bisa diakses publik (tanpa login)
-- Gunakan workflow GitHub Actions untuk otomatisasi deploy
+Proyek ini menggunakan **Terraform** untuk melakukan provisioning:
+- **Artifact Registry** (Docker repo)
+- **Cloud Run** service
+- Deploy image dari Artifact Registry ke Cloud Run
 
 ---
 
-## 📁 Struktur Folder
+## 📁 Struktur Direktori
 
-```bash
-9. Cloud Run from Source Repo/
-├── main.tf
-├── backend.tf
-├── variables.tf
-├── terraform.tfvars
-├── output.tf
+```hcl
+terraform/
+├── main.tf # Memanggil module utama
+├── variables.tf # Variabel global
+├── output.tf # Output resource penting
+├── terraform.tfvars # Nilai variable
+├── terraform.tfvars.example
+├── backend.tf # Remote state config (GCS)
+│
 ├── modules/
-│   └── cloudrun/
-│       ├── main.tf
-│       └── outputs.tf
-│       └── variables.tf
-├── terraform.tfstate (by Terraform)
-├── README.md ← 📌 (file ini)
+│ ├── artifact_registry/
+│ │ ├── main.tf
+│ │ └── variables.tf
+│ │
+│ └── cloud_run_service/
+│ ├── main.tf
+│ └── variables.tf
+│
+└── terraform.lock.hcl
 ```
 
-🛡️ IAM Permissions
-Agar Cloud Run bisa diatur oleh service account Terraform, pastikan sudah diberi role:
 
-```bash
-| Role                 | Fungsi                                    |
-| -------------------- | ----------------------------------------- |
-| Cloud Run Admin      | Kelola semua layanan Cloud Run            |
-| Service Account User | Jalankan action sebagai service acc       |
-| Storage Admin        | Akses Bucket GCS (jika pakai backend GCS) |
+---
+
+## 🚀 Fungsi
+```hcl
+
+| Modul | Deskripsi |
+|-------|-----------|
+| `artifact_registry` | Membuat Docker repository untuk menyimpan image |
+| `cloud_run_service` | Deploy Cloud Run menggunakan image dari Artifact Registry |
 ```
+---
 
-🌐 Output
-Jika ingin generate URL hasil deploy:
+## 🧾 Prasyarat
 
-```bash
-output "cloud_run_url" 
-{
-  value = "https://${var.service_name}-${var.region}.a.run.app"
-}
-```
+- Project GCP aktif
+- Service Account Terraform sudah diberi role:
+  - Artifact Registry Admin
+  - Cloud Run Admin
+  - Service Account User
+- Enable API:
+  - Artifact Registry API
+  - Cloud Run API
+
+---
+
+## 🛠️ Cara Pakai
+
+### 1. Edit `terraform.tfvars`
+```hcl
+project_id = "your-gcp-project-id"
+region     = "us-central1"
+service_name = "my-cloud-run-service"
+docker_repo_name = "my-artifact-repo"
+image_tag = "latest"
